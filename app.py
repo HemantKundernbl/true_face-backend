@@ -40,7 +40,7 @@ async def verify(selfie: UploadFile = File(...), frame: UploadFile = File(...), 
 
     # Perform verification
     try:
-        result = DeepFace.verify(selfie_image, frame_image, model_name=model)
+        result = DeepFace.verify(selfie_image, frame_image, model_name=model,detector_backend="mtcnn")
         return result
     except Exception as e:
         return {"error": f"Verification failed: {str(e)}"}
